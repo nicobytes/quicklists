@@ -1,0 +1,25 @@
+.home {
+  .home-item{
+    small.time{
+      position: absolute;
+      right: 5px;
+      top: 5px;
+    }
+    ion-item-content{
+      font-weight: bold;
+    }
+    .progress{
+      div{
+        display: block;
+        height: 5px;
+        width: 100%;
+        overflow: hidden;
+        margin-top: 2px;
+        div{
+          background-color: color($colors, secondary);
+        }
+        
+      }
+    }
+  }
+}

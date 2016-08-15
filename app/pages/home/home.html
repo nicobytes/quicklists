@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-navbar secondary>
+    <ion-title>
+      <ion-img src="images/logo.png" class="logo"></ion-img>
+    </ion-title>
+    <ion-buttons end>
+      <button (click)="addChecklist()">
+        <ion-icon name="add-circle"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="home">
+  <ion-list>
+    <ion-item *ngIf="checklists.length == 0">
+      No hay.
+    </ion-item>
+    <ion-item-sliding *ngFor="let checklist of checklists; let i = index;">
+      <button ion-item (click)="goToChecklistPage(checklist)" class="home-item">
+        <small class="time">{{ checklist.date | date:"short"  }}</small>
+        <ion-item-content>{{ checklist.title }} items.</ion-item-content>
+        <div class="progress">
+          <small>{{ checklist.doneItems.length }}/{{ checklist.items.length }}</small>
+          <div>
+            <div [style.width]="((checklist.doneItems.length / checklist.items.length) * 100) + '%'"></div>
+          </div>
+        </div>
+      </button>
+      <ion-item-options>
+        <button light (click)="renameChecklist(checklist, i)">
+          <ion-icon name="clipboard"></ion-icon>
+          Edit
+        </button>
+        <button danger (click)="removeChecklist(checklist, i)">
+          <ion-icon name="trash"></ion-icon>
+          Delete
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>
